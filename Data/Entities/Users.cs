@@ -53,5 +53,7 @@ namespace EventManageApp.Data.Entities
         [Required, MaxLength(10)]
         public UserStatus Status { get; set; } = UserStatus.Pending;
 
+        public ICollection<EventBookings> Bookings { get; set; }
+
     }
 }

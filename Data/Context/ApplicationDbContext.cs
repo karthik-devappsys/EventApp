@@ -15,7 +15,8 @@ namespace EventManageApp.Data.Context
         }
 
         public DbSet<Users> Users { get; set; }
-
+        public DbSet<Events> Events { get; set; }
+        public DbSet<EventBookings> EventBookings { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -32,22 +33,35 @@ namespace EventManageApp.Data.Context
                     Contact = "1234567890",
                     Email = "admin@exmaple.com",
                     Status = UserStatus.Active,
-                    // Password =  AuthService.HashPassword("admin@1234")
+                    Password = AuthService.HashPassword("admin@1234")
                 });
+            });
 
-                modelBuilder.Entity<Events>(entity =>
-                {
-                    entity.Property(e => e.Status).HasConversion<string>();
-                });
+            modelBuilder.Entity<Events>(entity =>
+            {
+                entity.Property(e => e.Status).HasConversion<string>();
+                entity.HasQueryFilter(e => e.DeletedAt == null);
+            });
+
+            modelBuilder.Entity<EventBookings>(entity =>
+            {
+                entity.Property(e => e.Status).HasConversion<string>();
+                entity.HasQueryFilter(eb => eb.Event.DeletedAt == null);
+
+                entity.HasOne(eb => eb.Event)
+                .WithMany(e => e.Bookings)
+                .HasForeignKey(eb => eb.EventId)
+                .OnDelete(DeleteBehavior.Cascade);
+
+                entity.HasOne(eb => eb.User)
+                .WithMany(u => u.Bookings)
+                .HasForeignKey(eb => eb.UserId)
+                .OnDelete(DeleteBehavior.Cascade);
+
             });
         }
 
-        // protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-        // {
 
-        //     optionsBuilder.UseSqlServer("Data Source=DESKTOP-NQADDIJ;Initial Catalog=Event_Mangement;Integrated Security=True;Encrypt=True;Trust Server Certificate=True")
-        //     .EnableSensitiveDataLogging().LogTo(Console.WriteLine, LogLevel.Information);
-        // }
 
     }
 }

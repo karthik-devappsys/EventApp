@@ -4,7 +4,33 @@
     ViewData["Title"] = "Event";
 }
 
+<div class="container-fluid mt-5">
+    <div class="d-flex justify-content-between flex-wrap">
+        <div class="">
+            <input type="search" class="form-control" placeholder="Search">
+        </div>
+        <div class="">
+            <a class="btn btn-primary" href="Events/Create">Add Event</a>
+        </div>
+    </div>
+    <div class="content-block my-3">
+        <div class="row row-cols-lg-4 row-cols-md-3 row-cols-sm-2 row-cols-1 g-2"> <!-- Added g-4 for spacing -->
+            <div class="col">
+                <div class="card h-100" style="padding: 0%;"> <!-- Added h-100 to make cards have equal height -->
+                    <img src="~/images/pexels-wendywei-1190298.jpg" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title line-clamp-1">Card tititle</h5>
+                        <p class="card-text line-clamp-3">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Cum
+                            vel molestiae
+                            tempore cumque, illo architecto distinctio asperiores eos natus qui fuga non voluptates ea
+                            expedita quas numquam atque repudiandae unde!</p>
+                        <button class="btn btn-primary w-100">View</button>
 
-<div>
+                    </div>
+                </div>
+            </div>
+        </div>
 
+
+    </div>
 </div>

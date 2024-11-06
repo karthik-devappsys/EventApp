@@ -1,4 +1,6 @@
 
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Runtime.Serialization;
 
 namespace EventManageApp.Data.Entities
@@ -17,11 +19,27 @@ namespace EventManageApp.Data.Entities
     }
     public class EventBookings : BaseEntity
     {
-        public int EventId { get; set; }
-        public int UserId { get; set; }
-        public int Slots { get; set; }
-        public decimal Price { get; set; }
-        public BookingStatus Status { get; set; } = BookingStatus.Pending;
+        [Required]
+        public Guid BookingId { get; set; } = Guid.NewGuid();
 
+        [Required]
+        public int EventId { get; set; }
+
+        public virtual Events Event { get; set; }
+
+        [Required]
+        public int UserId { get; set; }
+
+        public Users User { get; set; }
+
+        [Required]
+        public int Slots { get; set; }
+
+        [Required]
+        [Column(TypeName = "decimal(18,2)")]
+        public decimal Price { get; set; }
+
+        [Required]
+        public BookingStatus Status { get; set; } = BookingStatus.Pending;
     }
 }

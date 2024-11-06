@@ -17,7 +17,8 @@ namespace EventManageApp.Core.Services
             _context = dbContext;
         }
 
-        public string HashPassword(string Password)
+
+        public static string HashPassword(string Password)
         {
             int rounds = 10;
             string salt = BCrypt.Net.BCrypt.GenerateSalt(rounds);
