@@ -1,0 +1,54 @@
+@page
+@model EventManageApp.Pages.Auth.Register
+@{
+    ViewData["Title"] = "Register";
+}
+
+<div class="container align-middle mt-5">
+    <div class="card w-50  mx-auto">
+        <div class="card-body">
+            <h2 class="card-title text-center py-3">Create Account</h2>
+            <form class="d-flex flex-column gap-4 mt-4" method="post" enctype="multipart/form-data">
+                <div class="form-group">
+                    <input class="form-control" asp-for="RegisterModel.Name" placeholder="Name">
+                    <span class="text-danger" asp-validation-for="RegisterModel.Name"></span>
+                </div>
+                <div class="form-group">
+                    <input class="form-control" asp-for="RegisterModel.Contact" placeholder="Contact Number">
+                    <span class="text-danger" asp-validation-for="RegisterModel.Contact"></span>
+                </div>
+                <div class="form-group">
+                    <input class="form-control" asp-for="RegisterModel.Email" placeholder="Email Address">
+                    <span class="text-danger" asp-validation-for="RegisterModel.Email"></span>
+                </div>
+                <div class="form-group">
+                    <input class="form-control" asp-for="RegisterModel.Password" placeholder="Password">
+                    <span class="text-danger" asp-validation-for="RegisterModel.Password"></span>
+                </div>
+                <div class="form-group">
+                    <input class="form-control" asp-for="RegisterModel.ConfirmPassword" placeholder="Confirm Password">
+                    <span class="text-danger" asp-validation-for="RegisterModel.ConfirmPassword"></span>
+                </div>
+                <div class="form-group">
+                    <input class="form-control" asp-for="RegisterModel.ImageFile">
+                    <span class="text-danger" asp-validation-for="RegisterModel.ImageFile"></span>
+                </div>
+                <div class="form-button my-3">
+                    <button class="btn btn-primary form-control" type="submit">Sign Up</button>
+                </div>
+            </form>
+
+            <div class="my-3">
+                <p class="text-center">Already have an account? <a asp-area="" asp-page="./Login">Sign In</a>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+
+    }
+}

@@ -1,0 +1,44 @@
+:root {
+}
+html {
+    font-size: 14px;
+}
+
+@media (min-width: 768px) {
+    html {
+        font-size: 16px;
+    }
+}
+
+.btn:focus,
+.btn-link.nav-link:focus,
+.form-control:focus,
+.form-check-input:focus {
+    box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
+}
+
+.btn,
+.form-control {
+    padding: 13px 20px;
+    border-radius: 10px;
+}
+html {
+    position: relative;
+    min-height: 100%;
+    /* background-color: aliceblue; */
+}
+
+body {
+    margin-bottom: 60px;
+    background-color: rgb(243, 243, 244);
+}
+
+.card {
+    padding: 10px;
+    border-radius: 10px;
+}
+
+td,
+th {
+    padding: 18px 0px !important;
+}

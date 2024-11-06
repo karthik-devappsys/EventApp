@@ -1,0 +1,47 @@
+@page
+@model EventManageApp.Pages.Auth.Login
+@{
+    ViewData["Title"] = "Login";
+}
+
+
+<div class="container align-middle mt-5">
+    <div class="card w-50 mx-auto">
+        <div class="card-body">
+            <div class="card-title text-center">
+                <img src="~/images/login_logo.png" alt="login-logo" width="100">
+                <h4 class="card-title my-2">Login into your account</h4>
+
+            </div>
+            @if (!string.IsNullOrEmpty(Model.ErrorMessage))
+            {
+                <div class="alert alert-danger">@Model.ErrorMessage</div>
+            }
+            <form class="d-flex flex-column gap-4 mt-4" method="post">
+                <div class="form-group">
+                    <input class="form-control" asp-for="LoginModel.Email" placeholder="Email Id">
+                    <span class="text-danger" asp-validation-for="LoginModel.Email"></span>
+                </div>
+                <div class="form-group">
+                    <input class="form-control" asp-for="LoginModel.Password" placeholder="Password">
+                    <span class="text-danger" asp-validation-for="LoginModel.Password"></span>
+                </div>
+                <div class="form-button my-3">
+                    <button class="btn btn-primary form-control" type="submit">Login</button>
+                </div>
+            </form>
+
+            <div class="my-3">
+                <p class="text-center">Don't have an account? <a asp-area="" asp-page="./Register">Create Account</a>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+
+    }
+}
