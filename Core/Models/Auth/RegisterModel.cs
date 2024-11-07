@@ -26,9 +26,6 @@ namespace EventManageApp.Core.Models.Auth
         [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
         public string ConfirmPassword { get; set; } = string.Empty;
 
-        [Required(ErrorMessage = "Imagefile is required")]
-        [DataType(DataType.Upload)]
-        // [FileExtensions(Extensions = ".jpg,.jpeg,.png", ErrorMessage = "Please upload valid image file")]
-        public IFormFile ImageFile { get; set; }
+
     }
 }

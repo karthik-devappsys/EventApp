@@ -1,6 +1,4 @@
-
-
-using BCrypt.Net;
+using EventManageApp.Core.Enums;
 using EventManageApp.Core.Services;
 using EventManageApp.Data.Entities;
 using Microsoft.EntityFrameworkCore;

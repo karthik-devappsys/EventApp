@@ -1,22 +1,10 @@
 
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using System.Runtime.Serialization;
+using EventManageApp.Core.Enums;
 
 namespace EventManageApp.Data.Entities
 {
-    public enum BookingStatus
-    {
-        [EnumMember(Value = "Pending")]
-        Pending,
-
-        [EnumMember(Value = "Confirmed")]
-        Confirmed,
-
-        [EnumMember(Value = "Cancelled")]
-        Cancelled
-
-    }
     public class EventBookings : BaseEntity
     {
         [Required]

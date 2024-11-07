@@ -1,37 +1,9 @@
-
-
 using System.ComponentModel.DataAnnotations;
-using System.Runtime.Serialization;
+using EventManageApp.Core.Enums;
 using EventManageApp.Data.Entities.Base;
 
 namespace EventManageApp.Data.Entities
 {
-    public enum UserType
-    {
-        [EnumMember(Value = "Admin")]
-        Admin,
-
-        [EnumMember(Value = "User")]
-        User
-    }
-
-    public enum UserStatus
-    {
-        [EnumMember(Value = "Active")]
-        Active,
-
-        [EnumMember(Value = "Suspended")]
-        Suspended,
-
-        [EnumMember(Value = "Pending")]
-        Pending,
-
-        [EnumMember(Value = "Banned")]
-        Banned,
-
-        [EnumMember(Value = "Deleted")]
-        Deleted
-    }
     public class Users : SoftDelete
     {
 
@@ -52,7 +24,6 @@ namespace EventManageApp.Data.Entities
 
         [Required, MaxLength(10)]
         public UserStatus Status { get; set; } = UserStatus.Pending;
-
         public ICollection<EventBookings> Bookings { get; set; }
 
     }

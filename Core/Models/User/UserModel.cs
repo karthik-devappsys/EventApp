@@ -1,8 +1,4 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using EventManageApp.Data.Entities;
+using EventManageApp.Core.Enums;
 
 namespace EventManageApp.Core.Models.User
 {

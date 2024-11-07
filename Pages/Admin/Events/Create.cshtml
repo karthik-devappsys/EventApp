@@ -1,5 +1,67 @@
 @page
+@using EventManageApp.Core.Enums
 @model EventManageApp.Pages.Admin.Events.Create
 @{
     ViewData["Title"] = "Create";
+}
+
+<div class="my-3">
+    <div class="card border-0">
+        <div class="card-body">
+            <h4 class="card-title mb-4">Register a New Event</h4>
+            <form method="post" class="d-flex flex-column gap-4" autocomplete="off">
+                <div class="form-group">
+                    <input class="form-control" asp-for="Event.Title" placeholder="Event Title">
+                    <span class="text-danger" asp-validation-for="Event.Title"></span>
+                </div>
+
+                <div class="row row-cols-sm-1 row-cols-md-3 row-cols-lg-3 row-cols-2">
+                    <div class="form-group col">
+                        <input class="form-control" asp-for="Event.Price" placeholder="Price">
+                        <span class="text-danger" asp-validation-for="Event.Price"></span>
+                    </div>
+                    <div class="form-group col">
+                        <input class="form-control" asp-for="Event.TotalSlots" placeholder="Total Sloats">
+                        <span class="text-danger" asp-validation-for="Event.TotalSlots"></span>
+                    </div>
+                    <div class="form-group col">
+                        <select asp-for="Event.Status" asp-items="Html.GetEnumSelectList<EventStatus>()"
+                            class="form-control">
+                            <option value="" selected disabled>Select status</option>
+                        </select>
+                        <span class="text-danger" asp-validation-for="Event.Status"></span>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <textarea class="form-control" asp-for="Event.Description" placeholder="Description"
+                        rows="3"></textarea>
+                    <span class="text-danger" asp-validation-for="Event.Description"></span>
+                </div>
+
+                <div class="row row-cols-sm-1 row-cols-md-2 row-cols-lg-2 row-cols-2">
+                    <div class="form-group">
+                        <input class="form-control" asp-for="Event.EventDate" placeholder="Event Date">
+                        <span class="text-danger" asp-validation-for="Event.EventDate"></span>
+                    </div>
+                    <div class="form-group">
+                        <input class="form-control" asp-for="Event.ImageFile" placeholder="Event Poster"
+                            accept="image/*">
+                        <span class="text-danger" asp-validation-for="Event.ImageFile"></span>
+                    </div>
+                </div>
+
+                <div class="d-flex justify-content-end gap-4">
+                    <button class="btn" type="reset">Reset</button>
+                    <button class="btn btn-primary" type="submit">Submit</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
 }

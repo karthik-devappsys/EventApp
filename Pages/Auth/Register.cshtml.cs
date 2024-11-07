@@ -45,22 +45,6 @@ namespace EventManageApp.Pages.Auth
                     ModelState.AddModelError("RegisterModel.Email", "Email id already taken.");
                     return Page();
                 }
-
-                var uploadFolder = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "uploads");
-
-                // Create the directory if it doesn't exist
-                if (!Directory.Exists(uploadFolder))
-                {
-                    Directory.CreateDirectory(uploadFolder);
-                }
-
-                var uniqueFileName = $"User_{Guid.NewGuid()}{Path.GetExtension(RegisterModel.ImageFile.FileName)}";
-                var filePath = Path.Combine(uploadFolder, uniqueFileName);
-
-                using (var fileStream = new FileStream(filePath, FileMode.Create))
-                {
-                    await RegisterModel.ImageFile.CopyToAsync(fileStream);
-                }
                 await authService.CreateAccount(RegisterModel);
             }
             catch (Exception ex)

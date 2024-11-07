@@ -1,4 +1,5 @@
 using System.Security.Claims;
+using EventManageApp.Core.Enums;
 using EventManageApp.Core.Models.Auth;
 using EventManageApp.Data.Context;
 using EventManageApp.Data.Entities;
@@ -75,8 +76,7 @@ namespace EventManageApp.Core.Services
 
         private async Task SignInAsync(HttpContext httpContext, string userId, string role)
         {
-            var claims = new List<Claim>
-            {
+            var claims = new List<Claim>{
                 new Claim(ClaimTypes.NameIdentifier,userId),
                 new Claim(ClaimTypes.Role,role)
             };

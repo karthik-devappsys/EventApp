@@ -1,32 +1,10 @@
-
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using System.Runtime.Serialization;
+using EventManageApp.Core.Enums;
 using EventManageApp.Data.Entities.Base;
 
 namespace EventManageApp.Data.Entities
 {
-    public enum EventStatus
-    {
-        [EnumMember(Value = "Active")]
-        Active,
-
-        [EnumMember(Value = "Inactive")]
-        Inactive,
-
-        [EnumMember(Value = "Suspended")]
-        Suspended,
-
-        [EnumMember(Value = "Completed")]
-        Completed,
-
-        [EnumMember(Value = "Cancelled")]
-        Cancelled,
-
-        [EnumMember(Value = "Deleted")]
-        Deleted
-    }
-
     public class Events : SoftDelete
     {
 
@@ -52,6 +30,8 @@ namespace EventManageApp.Data.Entities
         [Required, MaxLength(10)]
         public EventStatus Status { get; set; } = EventStatus.Active;
 
+        [Required]
+        public string ImageUrl { get; set; } = string.Empty;
         public ICollection<EventBookings> Bookings { get; set; }
 
     }
