@@ -21,7 +21,10 @@ namespace EventManageApp.Pages.Admin.Events
 
         public async Task<IActionResult> OnPostAsync()
         {
+            Console.Write("Reached here ....");
             if (!ModelState.IsValid) return Page();
+
+            Console.WriteLine(Event);
             return Page();
         }
     }

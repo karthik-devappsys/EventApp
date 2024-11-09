@@ -10,6 +10,7 @@ using Microsoft.Extensions.Logging;
 
 namespace EventManageApp.Pages.Admin
 {
+    [Authorize()]
     public class Home : PageModel
     {
         private readonly ILogger<Home> _logger;

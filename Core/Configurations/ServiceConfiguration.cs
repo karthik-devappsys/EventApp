@@ -1,3 +1,4 @@
+using EventManageApp.Core.Common;
 using EventManageApp.Core.Services;
 using Microsoft.AspNetCore.Authentication.Cookies;
 
@@ -36,8 +37,11 @@ namespace EventManageApp.Core.Configurations
                 options.AddPolicy("UserOnly", policy => policy.RequireRole("User"));
             });
 
+            services.AddScoped<FileUploadHandler>(provider => new FileUploadHandler(Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "uploads")));
+
             services.AddScoped<AuthService>();
             services.AddScoped<EventService>();
+
         }
     }
 }
