@@ -1,30 +1,35 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+using EventManageApp.Core.Common;
 using EventManageApp.Core.Models.Event;
+using EventManageApp.Core.Services;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
-using Microsoft.Extensions.Logging;
 
 namespace EventManageApp.Pages.Admin.Events
 {
     public class Create : PageModel
     {
+        private readonly EventService _eventService;
+
+        public Create(EventService eventService)
+        {
+            _eventService = eventService;
+        }
         [BindProperty]
         public required CreateEvent Event { get; set; }
 
-
-        public void OnGet()
+        public IActionResult OnGet()
         {
+            return Page();
         }
 
         public async Task<IActionResult> OnPostAsync()
         {
-            Console.Write("Reached here ....");
             if (!ModelState.IsValid) return Page();
 
-            Console.WriteLine(Event);
+            bool isSuccess = await _eventService.CreateEvent(Event);
+
+            if (isSuccess) return RedirectToPage("./Index");
+
             return Page();
         }
     }

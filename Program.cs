@@ -16,6 +16,7 @@ builder.Services.AddDbContext<ApplicationDbContext>(options =>
     options.UseSqlServer(connectionString);
 });
 
+
 ServiceConfiguration.ConfigureServices(builder.Services);
 
 var app = builder.Build();
@@ -27,16 +28,14 @@ if (!app.Environment.IsDevelopment())
     // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
     app.UseHsts();
 }
-
-app.UseMiddleware<ExceptionHandler>();
-
 app.UseHttpsRedirection();
 app.UseStaticFiles();
-
-app.UseRouting();
 app.UseSession();
+app.UseMiddleware<ExceptionHandler>();
+app.UseRouting();
 app.UseAuthentication();
 app.UseAuthorization();
+
 
 app.MapGet("/Account/Logout", async context =>
 {
@@ -45,5 +44,4 @@ app.MapGet("/Account/Logout", async context =>
 });
 
 app.MapRazorPages();
-
 app.Run();

@@ -1,8 +1,3 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-
 namespace EventManageApp.Core.Common
 {
     public class FileUploadHandler
@@ -40,6 +35,17 @@ namespace EventManageApp.Core.Common
             }
 
             return fileName; // Return the unique file name
+        }
+
+        public bool DeleteFile(string folder, string fileName)
+        {
+            var filePath = Path.Combine(_uploadFolderPath, folder, fileName);
+            if (File.Exists(filePath))
+            {
+                File.Delete(filePath);
+                return true; // Successfully deleted
+            }
+            return false; // File not found
         }
     }
 }

@@ -30,24 +30,17 @@ namespace EventManageApp.Pages.Auth
         {
             if (!ModelState.IsValid) return Page();
 
-            try
-            {
-                HttpContext.Session.SetString("User", "Karna");
 
-                bool isAdmin = await authService.Login(LoginModel, HttpContext);
+            HttpContext.Session.SetString("User", "Karna");
 
-                if (isAdmin) return RedirectToPage("../Admin/Home");
+            bool isAdmin = await authService.Login(LoginModel, HttpContext);
+
+            if (isAdmin) return RedirectToPage("../Admin/Home");
 
 
-                return RedirectToPage("../User/Home");
+            return RedirectToPage("../User/Home");
 
-            }
-            catch (Exception ex)
-            {
-                ErrorMessage = ex.Message.ToString();
-                Console.WriteLine(ex);
-                return Page();
-            }
+
 
         }
     }

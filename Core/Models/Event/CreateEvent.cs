@@ -1,5 +1,6 @@
 
 using System.ComponentModel.DataAnnotations;
+using EventManageApp.Core.Attributes;
 using EventManageApp.Core.Enums;
 
 namespace EventManageApp.Core.Models.Event
@@ -27,6 +28,7 @@ namespace EventManageApp.Core.Models.Event
 
         [Required(ErrorMessage = "Please upload an image for the event.")]
         [DataType(DataType.Upload, ErrorMessage = "Please upload a valid image file.")]
+        [MaxFileSize(5 * 1024 * 1024)]
         public IFormFile ImageFile { get; set; }
 
         [Required(ErrorMessage = "Please select a status for the event.")]

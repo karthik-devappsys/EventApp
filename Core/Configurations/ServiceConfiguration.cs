@@ -41,6 +41,7 @@ namespace EventManageApp.Core.Configurations
 
             services.AddScoped<AuthService>();
             services.AddScoped<EventService>();
+            // services.AddScoped<MessageHelper>();
 
         }
     }
