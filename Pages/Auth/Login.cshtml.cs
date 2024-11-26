@@ -30,18 +30,11 @@ namespace EventManageApp.Pages.Auth
         {
             if (!ModelState.IsValid) return Page();
 
-
-            HttpContext.Session.SetString("User", "Karna");
-
             bool isAdmin = await authService.Login(LoginModel, HttpContext);
 
             if (isAdmin) return RedirectToPage("../Admin/Home");
 
-
             return RedirectToPage("../User/Home");
-
-
-
         }
     }
 }

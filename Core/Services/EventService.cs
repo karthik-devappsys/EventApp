@@ -61,5 +61,19 @@ namespace EventManageApp.Core.Services
                 Status = e.Status
             }).OrderByDescending(e => e.Id).ToListAsync();
         }
+
+        public async Task<IList<ViewEvents>> GetSearchedEvent(string searchedEvent)
+        {
+            return await _context.Events.Where(e => EF.Functions.Like(e.Title, $"%{searchedEvent}%")).Select(e => new ViewEvents
+            {
+                Id = e.Id,
+                Title = e.Title,
+                Description = e.Description,
+                EventDate = e.EventDate,
+                ImageUrl = e.ImageUrl,
+                Price = e.Price,
+                Status = e.Status
+            }).OrderByDescending(e => e.Id).ToListAsync();
+        }
     }
 }

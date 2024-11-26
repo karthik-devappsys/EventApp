@@ -9,6 +9,7 @@ namespace EventManageApp.Core.Configurations
 
         public static void ConfigureServices(IServiceCollection services)
         {
+            services.AddAntiforgery(o => o.HeaderName = "XSRF-TOKEN");
             // Session configuration
             services.AddSession(options =>
             {
@@ -25,7 +26,7 @@ namespace EventManageApp.Core.Configurations
                                 options.AccessDeniedPath = "/AccessDenied";
                                 options.LogoutPath = "/Account/Logout";
                                 options.ExpireTimeSpan = TimeSpan.FromHours(8);
-                                options.SlidingExpiration = false;
+                                options.SlidingExpiration = true;
                                 options.Cookie.HttpOnly = true;
                                 options.Cookie.SecurePolicy = CookieSecurePolicy.SameAsRequest;
                             });

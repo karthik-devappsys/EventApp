@@ -50,7 +50,28 @@
                             }
 
                             <li class="nav-item">
-                                <a class="btn btn-sm btn-primary w-full w-lg-auto" href="/Account/Logout">Logout</a>
+
+                                <div class="dropdown">
+                                    <a class="avatar rounded-circle" href="#" role="button" data-bs-toggle="dropdown"
+                                        aria-haspopup="true" aria-expanded="false">
+                                        <img alt="..."
+                                            src="https://images.unsplash.com/photo-1522307837370-cc113a36b784?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=3&w=256&h=256&q=80">
+                                    </a>
+                                    <div class="dropdown-menu dropdown-menu-end">
+                                        <a href="#!" class="dropdown-item">
+                                            <b> <i class="bi bi-person-fill me-1"></i> Profile</b>
+                                        </a>
+
+                                        <hr class="dropdown-divider">
+
+                                        <a href="/Account/Logout" class="dropdown-item">
+                                            <button class="btn btn-outline-primary w-100">
+                                                <i class="bi bi-box-arrow-in-right"></i> Logout
+                                            </button>
+                                        </a>
+                                    </div>
+                                </div>
+                                @* <a class="btn btn-sm btn-primary w-full w-lg-auto" href="/Account/Logout">Logout</a> *@
                             </li>
                         }
                         else

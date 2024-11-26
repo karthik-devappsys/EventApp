@@ -19,5 +19,16 @@ namespace EventManageApp.Pages.Admin.Event
             Events = await _service.GetEventsAsync();
             return Page();
         }
+
+        public async Task<IActionResult> OnGetSearchEvent(string searchData)
+        {
+            if (string.IsNullOrWhiteSpace(searchData))
+            {
+                Events = await _service.GetEventsAsync();
+                return new JsonResult(new { data = Events });
+            }
+            Events = await _service.GetSearchedEvent(searchData);
+            return new JsonResult(new { data = Events });
+        }
     }
 }
